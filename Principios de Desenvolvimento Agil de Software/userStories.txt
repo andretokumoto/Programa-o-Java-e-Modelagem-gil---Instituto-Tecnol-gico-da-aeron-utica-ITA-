@@ -1,0 +1,94 @@
+----tarefa----------------------------------------------------------------------------------------------------------------
+Especificação das seguintes User Stories:
+
+Logar usuário
+
+Visualizar lista de livros
+
+Visualizar livro
+
+Marcar leitura de livro
+
+Visualizar ranking de usuários
+
+Visualizar pontos e troféus de usuário
+
+PS 1: Não é preciso ter o cadastro de livros e de usuários. Esses dados podem estar pré-cadastrados na base de dados. Leia com atenção a descrição do sistema e inclua os dados que achar que são necessários.
+
+PS 2: Especificar as user stories seguindo o molde "Como um <tipo de usuário>, eu quero <ação>, de modo que <motivo>
+
+PS 3: Incluir os atributos tamanho (size) em pontos de história, valor de de negócios (BV = Business Value) e testes de aceitação (Acceptation Tests)!
+---------------------------------------------------------------------------------------------------------------------------
+
+
+User story 1:
+
+    "Como usuário cadastrado, eu quero poder fazer login em meu perfil, de modo que meus dados e histórico sejam acessados"
+
+    size: 4
+    BV: 8
+
+    Testes de aceitação:
+        - o usuário deve ser capaz de entar com seu login e senha
+        - o sistema deve ser capaz de verificar as credenciais
+        - se as credenciais forem validas o usuário deve ser redirecionado para a tela inicial autenticado no sistema
+        - se as credenciais forem invalidas, o sistema deve exibir uma mensagem de erro na autenticação
+
+
+User story 2:
+
+    "Como um usuário autenticado, eu quero Poder Visualizar as lista de livros disponiveis para leitura, de modo que eu possa selecionar os que me interessarem"
+
+    size: 3
+    BV: 5
+
+    Testes de aceitação:
+        - o usuário autenticado deve poder ver uma listagem com todos os livros cadastrados
+        - cada livro deve exibir seus dados basicos (autor, titulo, genero)
+        
+        
+
+User story 3:
+
+    "Como um usuário autenticado, eu quero selecionar um livro, de modo que eu possa ler seu conteúdo"
+
+     size: 3
+     BV: 7
+
+     Testes de aceitação:
+        - o usuário deve ser capaz de acessar um livro atraves de um clique no livro na listagem
+        - ao selecionar um livro o usuário deve ser redirecionado para uma tela na qual esteja o conteúdo do livro
+
+User story 4:
+
+    "Como um usuário autenticado, eu quero marcar a leitura de um livro, de modo que possa atualizar meu progresso na leitura"
+
+    size: 5
+    BV: 7
+
+    Testes de aceitação:
+        - o usuário deve ter a opção de salvar o progresso na leitura
+        - o progresso no livro deve ser salvo no sistema
+        - quando o usuario voltar paar o livro deve ser redirecionado para o ponto onde parrou da ultima vez
+
+User story 5:
+    "Como um usuário autenticado, eu quero Visualizar o ranking de usuário, de modo que eu possa ver meu posicionamento nele"
+
+    size: 2
+    BV: 5
+
+    Testes de aceitação:
+        - o usuario deve ter a opção que o direciona para uma tela onde aparece o ranking
+        - o sistema deve exibir o nome e os pontos de todos os usuarios 
+        - o ranking deve estar ordenado de forma decrescente de pontos
+
+User story 6:
+
+    "Como um usuário autenticado, eu quero Visualizar meus pontos e troféus, de modo que eu possa ver meu progresso e conquistas no sistema"
+
+    size: 1
+    BV: 7
+
+    Testes de aceitação:
+        - o usuario deve poder Visualizar em uma tela seus pontos e os trofeus que ja conquistou no sistema
+        - O sistema deve atualizar automaticamente os pontos e troféus à medida que o usuário conclui atividades
