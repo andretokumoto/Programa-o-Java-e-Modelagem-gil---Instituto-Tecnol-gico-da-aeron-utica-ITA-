@@ -1,6 +1,4 @@
-import os
 import PySimpleGUI as sg
-import string
 
 # Dados pré-cadastrados ------------------------------------------------------
 
@@ -188,7 +186,7 @@ layout_livro = [
 
 # -----------------------------------------------------------------------
 
-
+#abre tela de conquistas
 def conquistas():
 
     user = usuario_autenticado["user"]
@@ -209,25 +207,25 @@ def conquistas():
     window = sg.Window('Minhas Conquistas', layout_conquistas)
     
     while True:
-        event, values = window.read()
+        event = window.read()
         
         if event == sg.WIN_CLOSED :
             window.close()
             break
 
 
-
+#tela de ranking
 def ranking():
     usuarios_ordenados = sorted(usuarios, key=lambda usuariosR: usuariosR["pontos_totais"], reverse=True)
     
     layout_ranking = [
         [sg.Text('Ranking dos Usuários')],
         [sg.Table(
-            values=[[usuariosR["user"], usuariosR["pontos_totais"]] for usuariosR in usuarios_ordenados],
+            values=[[usuariosR["user"], usuariosR["pontos_totais"]] for usuariosR in usuarios_ordenados],#percorre os usuarios cadastrados
             headings=["Usuário", "Pontos Totais"],
             display_row_numbers=False,
             auto_size_columns=True,
-            num_rows=min(len(usuarios_ordenados), 10),
+            num_rows=min(len(usuarios_ordenados), 10),#ordena os 10 primeiros
             key='tabela',
             row_height=30,
         )],
@@ -236,14 +234,14 @@ def ranking():
     window = sg.Window('Ranking', layout_ranking)
     
     while True:
-        event, values = window.read()
+        event = window.read()
         
         if event == sg.WIN_CLOSED :
             window.close()
             break
 
 
-
+# faz os calculos de pontos e atualização de parametros
 def atribui_pontos(livro, titulo):
     paginas = int(livro["numero_paginas"])
     usuario_autenticado["livros_lidos"].append(titulo)
@@ -258,19 +256,16 @@ def atribui_pontos(livro, titulo):
         if usuario_autenticado["total_terror"] >= 5:
             usuario_autenticado["conquista_terror"] = "sim"
 
-
+#busca o livro na lista
 def buscar_livro(titulo):
     for livro in livros:
         if livro["titulo"] == titulo:
             return livro
     return None
 
+#abre a tela de livro
 def tela_livro(titulo):
     livro = buscar_livro(titulo)
-    if livro is None:
-        sg.popup("Livro não encontrado!")
-        return
-
     layout_livro = [
         [sg.Text(f'Título: {livro["titulo"]}', key='Titulo')],
         [sg.Text(f'Autor: {livro["autor"]}', key='Autor')],
@@ -284,7 +279,7 @@ def tela_livro(titulo):
     window = sg.Window('Informações do Livro', layout_livro)
     
     while True:
-        event, values = window.read()
+        event = window.read()
 
         if event == sg.WIN_CLOSED:
             window.close()
@@ -296,7 +291,7 @@ def tela_livro(titulo):
                 window['lido'].update(f'Lido: sim')
  
         
-
+#tela com a listagem de livros
 def listagem():
     window = sg.Window('Eu já li', layout_lista)
     
@@ -318,7 +313,7 @@ def listagem():
         elif event == 'Minhas conquistas':
             conquistas()  
 
-
+#realiza a checagem para autenticação
 def autentica(user, password):
     global usuario_autenticado
     for usuario in usuarios:
@@ -327,7 +322,7 @@ def autentica(user, password):
             return True
     return False
 
-
+#tela inicial de login
 def tela_login():
     window = sg.Window('Eu já li', layout_login)
 
